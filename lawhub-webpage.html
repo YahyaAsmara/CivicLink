@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LawHub - Canadian Legal Information Portal</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .chat-window {
+            display: none;
+            width: 300px;
+            height: 400px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .process-step {
+            position: relative;
+        }
+        
+        .process-step::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -30px;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 30px;
+            background-color: #6B7280;
+        }
+        
+        .process-step:last-child::after {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-blue-900 text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-balance-scale text-2xl mr-2"></i>
+                    <span class="text-2xl font-bold">LawHub</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#laws" class="hover:text-blue-200">Laws</a>
+                    <a href="#process" class="hover:text-blue-200">Legal Process</a>
+                    <a href="#resources" class="hover:text-blue-200">Resources</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-blue-800 text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl font-bold mb-4">Understanding Canadian Law Made Simple</h1>
+            <p class="text-xl mb-8">Your comprehensive guide to federal, provincial, and municipal criminal law</p>
+            <div class="flex justify-center space-x-4">
+                <input type="text" placeholder="Search legal information..." class="px-6 py-3 rounded-lg w-96 text-gray-900">
+                <button class="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Laws Section -->
+    <section id="laws" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-8 text-center">Criminal Law Database</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Federal Laws -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-blue-800 mb-4">
+                        <i class="fas fa-landmark text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Federal Criminal Law</h3>
+                    <p class="text-gray-600 mb-4">Access comprehensive information about Canadian federal criminal laws and statutes.</p>
+                    <button class="text-blue-600 hover:text-blue-800">Learn More →</button>
+                </div>
+
+                <!-- Provincial Laws -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-blue-800 mb-4">
+                        <i class="fas fa-building-columns text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Provincial Laws</h3>
+                    <p class="text-gray-600 mb-4">Explore criminal laws specific to your province or territory.</p>
+                    <button class="text-blue-600 hover:text-blue-800">Learn More →</button>
+                </div>
+
+                <!-- Municipal Laws -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-blue-800 mb-4">
+                        <i class="fas fa-city text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Municipal Bylaws</h3>
+                    <p class="text-gray-600 mb-4">Find information about local criminal bylaws and regulations.</p>
+                    <button class="text-blue-600 hover:text-blue-800">Learn More →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Process Section -->
+    <section id="process" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Criminal Legal Process</h2>
+            <div class="space-y-12">
+                <div class="process-step bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
+                    <h3 class="text-xl font-bold mb-4">1. Arrest and Charges</h3>
+                    <p class="text-gray-600">Understanding your rights during arrest and the charging process.</p>
+                </div>
+                
+                <div class="process-step bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
+                    <h3 class="text-xl font-bold mb-4">2. Bail Hearing</h3>
+                    <p class="text-gray-600">Learn about the bail process and your options for release.</p>
+                </div>
+                
+                <div class="process-step bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
+                    <h3 class="text-xl font-bold mb-4">3. Court Appearances</h3>
+                    <p class="text-gray-600">Navigate through different types of court appearances and their purposes.</p>
+                </div>
+                
+                <div class="process-step bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
+                    <h3 class="text-xl font-bold mb-4">4. Trial</h3>
+                    <p class="text-gray-600">Understanding the trial process and your rights in court.</p>
+                </div>
+                
+                <div class="process-step bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
+                    <h3 class="text-xl font-bold mb-4">5. Verdict and Sentencing</h3>
+                    <p class="text-gray-600">Learn about possible outcomes and the appeals process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <button id="chatbot-toggle" class="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700">
+            <i class="fas fa-comments text-2xl"></i>
+        </button>
+        
+        <div id="chat-window" class="chat-window">
+            <div class="p-4 bg-blue-600 text-white rounded-t-lg">
+                <h3 class="font-bold">Legal Assistant</h3>
+            </div>
+            <div class="p-4 h-64 overflow-y-auto" id="chat-messages">
+                <div class="mb-4">
+                    <p class="text-gray-600">Hello! How can I help you with legal information today?</p>
+                </div>
+            </div>
+            <div class="p-4 border-t">
+                <div class="flex">
+                    <input type="text" id="chat-input" placeholder="Type your question..." 
+                           class="flex-1 p-2 border rounded-l focus:outline-none focus:border-blue-500">
+                    <button class="bg-blue-600 text-white px-4 rounded-r hover:bg-blue-700">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chatbot Toggle
+        document.getElementById('chatbot-toggle').addEventListener('click', function() {
+            const chatWindow = document.getElementById('chat-window');
+            chatWindow.style.display = chatWindow.style.display === 'none' ? 'block' : 'none';
+        });
+
+        // Simple chat functionality
+        document.getElementById('chat-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const input = this.value;
+                if (input.trim() !== '') {
+                    addMessage(input, 'user');
+                    // Simulate response (replace with actual chatbot API)
+                    setTimeout(() => {
+                        addMessage('I understand you\'re asking about "' + input + '". Let me help you with that...', 'bot');
+                    }, 1000);
+                    this.value = '';
+                }
+            }
+        });
+
+        function addMessage(text, sender) {
+            const messagesDiv = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'mb-4';
+            const message = document.createElement('p');
+            message.className = sender === 'user' ? 'text-right text-blue-600' : 'text-gray-600';
+            message.textContent = text;
+            messageDiv.appendChild(message);
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+    </script>
+</body>
+</html>
