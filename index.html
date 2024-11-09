@@ -6,43 +6,7 @@
     <title>LawHub - Canadian Legal Information Portal</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        .chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        
-        .chat-window {
-            display: none;
-            width: 300px;
-            height: 400px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .process-step {
-            position: relative;
-        }
-        
-        .process-step::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -30px;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 30px;
-            background-color: #6B7280;
-        }
-        
-        .process-step:last-child::after {
-            display: none;
-        }
-    </style>
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
@@ -54,9 +18,16 @@
                     <span class="text-2xl font-bold">LawHub</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#laws" class="hover:text-blue-200">Laws</a>
-                    <a href="#process" class="hover:text-blue-200">Legal Process</a>
-                    <a href="#resources" class="hover:text-blue-200">Resources</a>
+                    <div class="relative group">
+                        <a href="#" class="hover:text-blue-200">Laws ▾</a>
+                        <div class="absolute hidden group-hover:block w-48 bg-white text-gray-800 shadow-lg rounded-lg mt-2">
+                            <a href="federal.html" class="block px-4 py-2 hover:bg-gray-100">Federal Laws</a>
+                            <a href="provincial.html" class="block px-4 py-2 hover:bg-gray-100">Provincial Laws</a>
+                            <a href="municipal.html" class="block px-4 py-2 hover:bg-gray-100">Municipal Laws</a>
+                        </div>
+                    </div>
+                    <a href="process.html" class="hover:text-blue-200">Legal Process</a>
+                    <a href="resources.html" class="hover:text-blue-200">Resources</a>
                 </div>
             </div>
         </div>
@@ -172,39 +143,6 @@
         </div>
     </div>
 
-    <script>
-        // Chatbot Toggle
-        document.getElementById('chatbot-toggle').addEventListener('click', function() {
-            const chatWindow = document.getElementById('chat-window');
-            chatWindow.style.display = chatWindow.style.display === 'none' ? 'block' : 'none';
-        });
-
-        // Simple chat functionality
-        document.getElementById('chat-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const input = this.value;
-                if (input.trim() !== '') {
-                    addMessage(input, 'user');
-                    // Simulate response (replace with actual chatbot API)
-                    setTimeout(() => {
-                        addMessage('I understand you\'re asking about "' + input + '". Let me help you with that...', 'bot');
-                    }, 1000);
-                    this.value = '';
-                }
-            }
-        });
-
-        function addMessage(text, sender) {
-            const messagesDiv = document.getElementById('chat-messages');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'mb-4';
-            const message = document.createElement('p');
-            message.className = sender === 'user' ? 'text-right text-blue-600' : 'text-gray-600';
-            message.textContent = text;
-            messageDiv.appendChild(message);
-            messagesDiv.appendChild(messageDiv);
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

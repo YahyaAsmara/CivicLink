@@ -1,0 +1,200 @@
+/* Base Styles */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.chat-window {
+    display: none;
+    width: 300px;
+    height: 400px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Process Timeline Styles */
+.process-phase {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.process-phase::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -20px;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background-color: #6B7280;
+}
+
+.process-phase:last-child::after {
+    display: none;
+}
+
+.process-step {
+    position: relative;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    transition: transform 0.2s;
+}
+
+.process-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Dropdown Styles */
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.nav-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Law Section Styles */
+.law-category {
+    border-left: 4px solid #2563eb;
+    padding-left: 1rem;
+    margin: 1rem 0;
+    transition: border-color 0.3s;
+}
+
+.law-category:hover {
+    border-color: #1e40af;
+}
+
+.law-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.law-details.active {
+    max-height: 500px;
+}
+
+/* Province Selector Styles */
+.province-selector {
+    position: relative;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml,...");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+}
+
+/* Resource Card Styles */
+.resource-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: all 0.3s;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Timeline Styles */
+.timeline-container {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #6B7280;
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.timeline-content {
+    width: 45%;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 2rem;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+    }
+    
+    .timeline-content {
+        width: 100%;
+        margin-left: 3rem;
+    }
+}
+
+/* Animation Styles */
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-slide-in {
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+/* Chatbot Styles */
+.chat-message {
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    max-width: 80%;
+}
+
+.chat-message.user {
+    background-color: #2563eb;
+    color: white;
+    margin-left: auto;
+}
+
+.chat-message.bot {
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
