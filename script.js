@@ -56,9 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    const dropdownButton = document.querySelector('.dropdown-button');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-
     const processSteps = document.querySelectorAll('.process-step');
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -80,35 +77,52 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(step);
     });
 
-    dropdownButton.addEventListener('mouseenter', function () {
-        dropdownMenu.classList.remove('hidden');
-    });
+    // Get all dropdown buttons and create a function to close all dropdowns
+    const dropdowns = document.querySelectorAll('.dropdown-button');
+    const dropdownMenus = document.querySelectorAll('.dropdown-menu');
 
-    dropdownButton.addEventListener('mouseleave', function () {
-        setTimeout(function() {
-            if (!dropdownMenu.matches(':hover')) {
-                dropdownMenu.classList.add('hidden');
-            }
-        }, 100);
-    });
-
-    dropdownMenu.addEventListener('mouseenter', function () {
-        dropdownMenu.classList.remove('hidden');
-    });
-
-    dropdownMenu.addEventListener('mouseleave', function () {
-        dropdownMenu.classList.add('hidden');
-    });
-
-    // line 3 -24 is for the dropdown
-
-    // Navigation Dropdown
-    const dropdownButtons = document.querySelectorAll('.dropdown-trigger');
-    dropdownButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const dropdown = button.nextElementSibling;
-            dropdown.classList.toggle('hidden');
+    // Function to close all dropdowns
+    function closeAllDropdowns() {
+        dropdownMenus.forEach(menu => {
+            menu.classList.add('hidden');
         });
+    }
+
+    // Add click handlers to all dropdown buttons
+    dropdowns.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent the # link from updating URL
+            
+            // Get the dropdown menu that belongs to this button
+            const menu = this.nextElementSibling;
+            
+            // Close all other dropdowns first
+            dropdownMenus.forEach(dropdownMenu => {
+                if (dropdownMenu !== menu) {
+                    dropdownMenu.classList.add('hidden');
+                }
+            });
+            
+            // Toggle the current dropdown
+            menu.classList.toggle('hidden');
+        });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        const isDropdownButton = e.target.matches('.dropdown-button');
+        const isInsideDropdown = e.target.closest('.dropdown-menu');
+        
+        if (!isDropdownButton && !isInsideDropdown) {
+            closeAllDropdowns();
+        }
+    });
+
+    // Close dropdown when pressing Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeAllDropdowns();
+        }
     });
 
     // Law Category Expansion
