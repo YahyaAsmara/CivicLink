@@ -3,6 +3,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const dropdownButton = document.querySelector('.dropdown-button');
     const dropdownMenu = document.querySelector('.dropdown-menu');
 
+    const processSteps = document.querySelectorAll('.process-step');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-10');
+            } else {
+                if (entry.boundingClientRect.top > 0) {
+                    entry.target.classList.remove('opacity-100', 'translate-y-0');
+                    entry.target.classList.add('opacity-0', 'translate-y-10');
+                }
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    
+    processSteps.forEach(step => {
+        observer.observe(step);
+    });
+
     dropdownButton.addEventListener('mouseenter', function () {
         dropdownMenu.classList.remove('hidden');
     });
