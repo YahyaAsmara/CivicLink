@@ -1,4 +1,30 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {  
+
+    const dropdownButton = document.querySelector('.dropdown-button');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    dropdownButton.addEventListener('mouseenter', function () {
+        dropdownMenu.classList.remove('hidden');
+    });
+
+    dropdownButton.addEventListener('mouseleave', function () {
+        setTimeout(function() {
+            if (!dropdownMenu.matches(':hover')) {
+                dropdownMenu.classList.add('hidden');
+            }
+        }, 100);
+    });
+
+    dropdownMenu.addEventListener('mouseenter', function () {
+        dropdownMenu.classList.remove('hidden');
+    });
+
+    dropdownMenu.addEventListener('mouseleave', function () {
+        dropdownMenu.classList.add('hidden');
+    });
+
+    // line 3 -24 is for the dropdown
+
     // Navigation Dropdown
     const dropdownButtons = document.querySelectorAll('.dropdown-trigger');
     dropdownButtons.forEach(button => {
