@@ -1,7 +1,7 @@
 # LawHub 🔖
 
 ## Overview
-LawHub is a comprehensive legal information platform designed to make Canadian law more accessible to the public. The platform aggregates and summarizes federal, provincial, and municipal laws, with a primary focus on criminal law. Our mission is to enhance transparency in the legal system and provide easy access to legal information for all Canadians.
+LawHub is a comprehensive legal information platform designed to make Canadian law more accessible to the public. The platform aggregates and summarizes federal, provincial, and municipal laws, with a primary focus on criminal law. Our mission is to enhance transparency in the legal system and provide easy access to legal information for all Canadians. Our team's focus area: 1. Access to Justice.
 
 ## Features
 
