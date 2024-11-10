@@ -201,3 +201,51 @@
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+
+#phase1Text{
+    display: none;
+}
+
+#phase1Header:hover #phase1Text{
+    display: block;
+}
+
+#phase1Header:hover #phase1Header{
+    display: none;
+}
+
+#phase2Text{
+    display: none;
+}
+
+#phase2Header:hover #phase2Text{
+    display: block;
+}
+
+#phase2Header:hover #phase2Header{
+    display: none;
+}
+
+#phase3Text{
+    display: none;
+}
+
+#phase3Header:hover #phase3Text{
+    display: block;
+}
+
+#phase3Header:hover #phase3Header{
+    display: none;
+}
+
+#phase4Text{
+    display: none;
+}
+
+#phase4Header:hover #phase4Text{
+    display: block;
+}
+
+#phase4Header:hover #phase4Header{
+    display: none;
+}
