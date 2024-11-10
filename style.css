@@ -20,12 +20,6 @@
 .process-phase {
     position: relative;
     margin-bottom: 40px;
-    display: none;
-}
-
-/* Display the process content once a mouse is hovered over a header */
-.HEADER:hover .process-phase {
-    display: block;    /* Show content when a mouse is hovered over a header */
 }
 
 .process-phase::after {
