@@ -27,7 +27,7 @@ LawHub is a comprehensive legal information platform designed to make Canadian l
 - TailwindCSS
 - Vercel (Deployment)
 
-# Technology We Scrapped
+### Technology We Scrapped
 - React
 - Node.js
 - OpenAI integration
@@ -45,7 +45,7 @@ This project is deployed using Vercel. You can visit the live site at: [https://
 
 ## Contact
 
-LawHub was created by 5 group members for **Hack The Change 2024.**
+LawHub was created by a team of **5** for **Hack The Change 2024.**
 - Yahya Asmara: yahya.asmara@ucalgary.ca
 - ...
 - ...
