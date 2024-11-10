@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Municipal Laws - LawHub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- Same navigation as index.html -->
+    
+    <div class="container mx-auto px-6 py-8">
+        <h1 class="text-3xl font-bold mb-8">Municipal Laws and Bylaws</h1>
+        
+        <!-- City Selector -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-bold mb-4">Select Your Municipality</h2>
+            <div class="flex gap-4">
+                <select id="province-select" class="flex-1 p-2 border rounded">
+                    <option value="">Select Province First...</option>
+                    <option value="ON">Ontario</option>
+                    <option value="BC">British Columbia</option>
+                    <option value="AB">Alberta</option>
+                </select>
+                <select id="city-select" class="flex-1 p-2 border rounded" disabled>
+                    <option value="">Select City...</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Common Municipal Bylaws -->
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold mb-6">Common Municipal Bylaws</h2>
+                
+                <div class="space-y-6">
+                    <div class="law-category">
+                        <h3 class="text-xl font-bold">Noise Control</h3>
+                        <div class="mt-3 text-gray-600">
+                            <ul class="list-disc ml-6">
+                                <li>Quiet hours (typically 11 PM to 7 AM)</li>
+                                <li>Construction noise restrictions</li>
+                                <li>Entertainment venue regulations</li>
+                                <li>Penalties for violations</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="law-category">
+                        <h3 class="text-xl font-bold">Property Standards</h3>
+                        <div class="mt-3 text-gray-600">
+                            <ul class="list-disc ml-6">
+                                <li>Property maintenance requirements</li>
+                                <li>Snow removal obligations</li>
+                                <li>Waste management rules</li>
+                                <li>Yard maintenance standards</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="law-category">
+                        <h3 class="text-xl font-bold">Animal Control</h3>
+                        <div class="mt-3 text-gray-600">
+                            <ul class="list-disc ml-6">
+                                <li>Pet licensing requirements</li>
+                                <li>Leash laws</li>
+                                <li>Prohibited animals</li>
+                                <li>Animal waste disposal</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold mb-6">Enforcement & Penalties</h2>
+                
+                <div class="space-y-6">
+                    <div class="law-category">
+                        <h3 class="text-xl font-bold">Bylaw Officers</h3>
+                        <div class="mt-3 text-gray-600">
+                            <ul class="list-disc ml-6">
+                                <li>Authority and jurisdiction</li>
+                                <li>Inspection powers</li>
+                                <li>Investigation procedures</li>
+                                <li>Complaint response</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="law-category">
+                        <h3 class="text-xl font-bold">Violation Notices</h3>
+                        <div class="mt-3 text-gray-600">
+                            <ul class="list-disc ml-6">
+                                <li>Warning notices</li>
+                                <li>Fines and penalties</li>
+                                <li>Payment procedures</li>
+                                <li>Appeal process</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
