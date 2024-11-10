@@ -203,7 +203,7 @@
 }
 
 #phase1Text{
-    display: none;
+    display: hidden;
 }
 
 #phase1Header:hover #phase1Text{
@@ -211,11 +211,11 @@
 }
 
 #phase1Header:hover #phase1Header{
-    display: none;
+    display: hidden;
 }
 
 #phase2Text{
-    display: none;
+    display: hidden;
 }
 
 #phase2Header:hover #phase2Text{
@@ -223,11 +223,11 @@
 }
 
 #phase2Header:hover #phase2Header{
-    display: none;
+    display: hidden;
 }
 
 #phase3Text{
-    display: none;
+    display: hidden;
 }
 
 #phase3Header:hover #phase3Text{
@@ -235,11 +235,11 @@
 }
 
 #phase3Header:hover #phase3Header{
-    display: none;
+    display: hidden;
 }
 
 #phase4Text{
-    display: none;
+    display: hidden;
 }
 
 #phase4Header:hover #phase4Text{
@@ -247,5 +247,5 @@
 }
 
 #phase4Header:hover #phase4Header{
-    display: none;
+    display: hidden;
 }
