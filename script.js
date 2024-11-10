@@ -204,8 +204,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Get the elements
-    const phase2Header = document.getElementById("phase1Header");
-    const phase2Text = document.getElementById("phase1Text");
+    const phase2Header = document.getElementById("phase2Header");
+    const phase2Text = document.getElementById("phase2Text");
 
     // Add event listener for when mouse hovers over header
     phase2Header.addEventListener("mouseenter", function() {
@@ -220,11 +220,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Get the elements
-    const phase3Header = document.getElementById("phase1Header");
-    const phase3Text = document.getElementById("phase1Text");
+    const phase3Header = document.getElementById("phase3Header");
+    const phase3Text = document.getElementById("phase3Text");
 
     // Add event listener for when mouse hovers over header
-    phase1Header.addEventListener("mouseenter", function() {
+    phase3Header.addEventListener("mouseenter", function() {
         phase3Text.style.display = "block";
         phase3Header.style.display = "none";
     });
@@ -236,8 +236,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Get the elements
-    const phase4Header = document.getElementById("phase1Header");
-    const phase4Text = document.getElementById("phase1Text");
+    const phase4Header = document.getElementById("phase4Header");
+    const phase4Text = document.getElementById("phase4Text");
 
     // Add event listener for when mouse hovers over header
     phase4Header.addEventListener("mouseenter", function() {
