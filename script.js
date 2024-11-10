@@ -1,10 +1,65 @@
 document.addEventListener('DOMContentLoaded', function() {  
 
+    const chatToggle = document.querySelector('.chat-toggle');
+    const chatWindow = document.querySelector('.chat-window');
+    const chatInput = document.querySelector('.chat-input');
+    const sendButton = document.querySelector('.send-button');
+    const chatMessages = document.querySelector('.chat-messages');
+
+    // Toggle chat window
+    chatToggle.addEventListener('click', function() {
+        chatWindow.style.display = chatWindow.style.display === 'none' ? 'block' : 'none';
+        if (chatWindow.style.display === 'block') {
+            chatInput.focus();
+        }
+    });
+
+    // Send message function
+    function sendMessage() {
+        const message = chatInput.value.trim();
+        if (message) {
+            // Add user message
+            addMessage(message, 'user');
+            chatInput.value = '';
+
+            // Simulate bot response
+            setTimeout(() => {
+                const botResponse = "I'm here to help with legal information. What specific area would you like to learn more about?";
+                addMessage(botResponse, 'bot');
+            }, 1000);
+        }
+    }
+
+    // Add message to chat
+    function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'message';
+        
+        const messageContent = document.createElement('div');
+        messageContent.className = sender === 'user' ? 'user-message' : 'bot-message';
+        messageContent.textContent = text;
+        
+        messageDiv.appendChild(messageContent);
+        chatMessages.appendChild(messageDiv);
+        
+        // Scroll to bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Send button click handler
+    sendButton.addEventListener('click', sendMessage);
+
+    // Enter key handler
+    chatInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
     const dropdownButton = document.querySelector('.dropdown-button');
     const dropdownMenu = document.querySelector('.dropdown-menu');
 
     const processSteps = document.querySelectorAll('.process-step');
-
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -116,38 +171,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 </ul>
             `;
         }
-    }
-    // Chatbot Toggle
-    document.getElementById('chatbot-toggle').addEventListener('click', function() {
-        const chatWindow = document.getElementById('chat-window');
-        chatWindow.style.display = chatWindow.style.display === 'none' ? 'block' : 'none';
-    });
-
-    // Simple chat functionality
-    document.getElementById('chat-input').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            const input = this.value;
-            if (input.trim() !== '') {
-                addMessage(input, 'user');
-                // Simulate response (replace with actual chatbot API)
-                setTimeout(() => {
-                    addMessage('I understand you\'re asking about "' + input + '". Let me help you with that...', 'bot');
-                }, 1000);
-                this.value = '';
-            }
-        }
-    });
-
-    function addMessage(text, sender) {
-        const messagesDiv = document.getElementById('chat-messages');
-        const messageDiv = document.createElement('div');
-        messageDiv.className = 'mb-4';
-        const message = document.createElement('p');
-        message.className = sender === 'user' ? 'text-right text-blue-600' : 'text-gray-600';
-        message.textContent = text;
-        messageDiv.appendChild(message);
-        messagesDiv.appendChild(messageDiv);
-        messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
     /*
