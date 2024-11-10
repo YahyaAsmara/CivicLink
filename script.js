@@ -187,6 +187,70 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Get the elements
+    const phase1Header = document.getElementById("phase1Header");
+    const phase1Text = document.getElementById("phase1Text");
+
+    // Add event listener for when mouse hovers over header
+    phase1Header.addEventListener("mouseenter", function() {
+        phase1Text.style.display = "block";
+        phase1Header.style.display = "none";
+    });
+
+    // Add event listener for when mouse stops hovering over text 
+    phase1Text.addEventListener("mouseleave", function() {
+        phase1Text.style.display = "none";
+        phase1Header.style.display = "block";
+    });
+
+    // Get the elements
+    const phase2Header = document.getElementById("phase1Header");
+    const phase2Text = document.getElementById("phase1Text");
+
+    // Add event listener for when mouse hovers over header
+    phase2Header.addEventListener("mouseenter", function() {
+        phase2Text.style.display = "block";
+        phase2Header.style.display = "none";
+    });
+
+    // Add event listener for when mouse stops hovering over text 
+    phase2Text.addEventListener("mouseleave", function() {
+        phase2Text.style.display = "none";
+        phase2Header.style.display = "block";
+    });
+
+    // Get the elements
+    const phase3Header = document.getElementById("phase1Header");
+    const phase3Text = document.getElementById("phase1Text");
+
+    // Add event listener for when mouse hovers over header
+    phase1Header.addEventListener("mouseenter", function() {
+        phase3Text.style.display = "block";
+        phase3Header.style.display = "none";
+    });
+
+    // Add event listener for when mouse stops hovering over text 
+    phase3Text.addEventListener("mouseleave", function() {
+        phase3Text.style.display = "none";
+        phase3Header.style.display = "block";
+    });
+
+    // Get the elements
+    const phase4Header = document.getElementById("phase1Header");
+    const phase4Text = document.getElementById("phase1Text");
+
+    // Add event listener for when mouse hovers over header
+    phase4Header.addEventListener("mouseenter", function() {
+        phase4Text.style.display = "block";
+        phase4Header.style.display = "none";
+    });
+
+    // Add event listener for when mouse stops hovering over text 
+    phase4Text.addEventListener("mouseleave", function() {
+        phase4Text.style.display = "none";
+        phase4Header.style.display = "block";
+    });
+
     /*
     document.addEventListener('DOMContentLoaded', function() {
         const chatToggle = document.getElementById('chatbot-toggle');

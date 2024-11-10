@@ -207,49 +207,50 @@
 }
 
 #phase1Text{
-    display: hidden;
+    display: none;
 }
 
-#phase1Header:hover #phase1Text{
+#phase1Header:hover ~ #phase1Text {
     display: block;
 }
 
-#phase1Header:hover #phase1Header{
-    display: hidden;
+#phase1Header:hover {
+    display: none;
 }
 
 #phase2Text{
-    display: hidden;
+    display: none;
 }
 
-#phase2Header:hover #phase2Text{
+#phase2Header:hover ~ #phase2Text {
     display: block;
 }
 
-#phase2Header:hover #phase2Header{
-    display: hidden;
+#phase2Header:hover {
+    display: none;
 }
 
 #phase3Text{
-    display: hidden;
+    display: none;
 }
 
-#phase3Header:hover #phase3Text{
+#phase3Header:hover ~ #phase3Text {
     display: block;
 }
 
-#phase3Header:hover #phase3Header{
-    display: hidden;
+#phase3Header:hover {
+    display: none;
 }
 
 #phase4Text{
-    display: hidden;
+    display: none;
 }
 
-#phase4Header:hover #phase4Text{
+#phase4Header:hover ~ #phase4Text {
     display: block;
 }
 
-#phase4Header:hover #phase4Header{
-    display: hidden;
+#phase4Header:hover {
+    display: none;
 }
+
