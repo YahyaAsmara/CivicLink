@@ -26,34 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Chatbot Functionality
-    const chatbotToggle = document.getElementById('chatbot-toggle');
-    const chatWindow = document.getElementById('chat-window');
-    const chatInput = document.getElementById('chat-input');
-    const chatMessages = document.getElementById('chat-messages');
-
-    if (chatbotToggle && chatWindow) {
-        chatbotToggle.addEventListener('click', () => {
-            chatWindow.style.display = chatWindow.style.display === 'none' ? 'block' : 'none';
-        });
-    }
-
-    if (chatInput) {
-        chatInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const message = this.value.trim();
-                if (message) {
-                    addChatMessage(message, 'user');
-                    this.value = '';
-                    // Simulate bot response
-                    setTimeout(() => {
-                        processChatbotResponse(message);
-                    }, 1000);
-                }
-            }
-        });
-    }
-
     // Helper Functions
     function updateProvinceContent(province) {
         const contentDiv = document.getElementById('province-specific-laws');
@@ -61,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const provinceData = {
             'on': {
-                title: 'Ontario Provincial Laws',
+                title: 'Alberta Provincial Laws',
                 laws: [
                     'Highway Traffic Act',
                     'Provincial Offences Act',
@@ -90,31 +62,96 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function addChatMessage(message, sender) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `chat-message ${sender}`;
-        messageDiv.textContent = message;
-        chatMessages.appendChild(messageDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function processChatbotResponse(userMessage) {
-        // Simple keyword-based responses
-        const responses = {
-            'arrest': 'If you\'re arrested, you have the right to remain silent and the right to legal counsel. Would you like to learn more about your rights during arrest?',
-            'bail': 'Bail hearings typically occur within 24 hours of arrest. A surety may be required. Would you like more information about the bail process?',
-            'lawyer': 'You can contact Legal Aid or the Law Society Referral Service to find a lawyer. Would you like contact information?',
-            'trial': 'Criminal trials involve several stages including arraignment, preliminary hearing, and the main trial. Would you like details about a specific stage?',
-            'default': 'I can help you understand Canadian criminal law and procedures. What specific aspect would you like to learn more about?'
-        };
-
-        let response = responses.default;
-        Object.keys(responses).forEach(keyword => {
-            if (userMessage.toLowerCase().includes(keyword)) {
-                response = responses[keyword];
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatToggle = document.getElementById('chatbot-toggle');
+        const chatWindow = document.getElementById('chat-window');
+        const chatInput = document.getElementById('chat-input');
+        const chatMessages = document.getElementById('chat-messages');
+        let isChatOpen = false;
+    
+        // Toggle chat window
+        chatToggle.addEventListener('click', () => {
+            isChatOpen = !isChatOpen;
+            chatWindow.style.display = isChatOpen ? 'block' : 'none';
+        });
+    
+        // Handle sending messages
+        async function sendMessage(message) {
+            // Add user message to chat
+            appendMessage('user', message);
+    
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message })
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+    
+                const data = await response.json();
+                appendMessage('bot', data.response);
+            } catch (error) {
+                console.error('Error:', error);
+                appendMessage('bot', 'Sorry, I encountered an error. Please try again.');
+            }
+        }
+    
+        // Add message to chat window with typing animation
+        function appendMessage(sender, message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `mb-4 ${sender === 'user' ? 'text-right' : ''}`;
+            
+            const messageContent = document.createElement('p');
+            messageContent.className = `inline-block p-2 rounded-lg ${
+                sender === 'user' 
+                    ? 'bg-blue-600 text-white' 
+                    : 'bg-gray-200 text-gray-800'
+            }`;
+    
+            if (sender === 'bot') {
+                // Add typing animation for bot messages
+                const typingIndicator = document.createElement('div');
+                typingIndicator.className = 'typing-indicator';
+                typingIndicator.textContent = '...';
+                messageContent.appendChild(typingIndicator);
+                
+                // Simulate typing effect
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < message.length) {
+                        messageContent.textContent = message.substring(0, i + 1);
+                        i++;
+                        setTimeout(typeWriter, 20); // Adjust speed as needed
+                    }
+                };
+                setTimeout(typeWriter, 500); // Start typing after a short delay
+            } else {
+                messageContent.textContent = message;
+            }
+            
+            messageDiv.appendChild(messageContent);
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    
+        // Handle input submission
+        document.querySelector('#chat-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && chatInput.value.trim()) {
+                sendMessage(chatInput.value.trim());
+                chatInput.value = '';
             }
         });
-
-        addChatMessage(response, 'bot');
-    }
+    
+        document.querySelector('#chat-window button').addEventListener('click', () => {
+            if (chatInput.value.trim()) {
+                sendMessage(chatInput.value.trim());
+                chatInput.value = '';
+            }
+        });
+    });
 });
