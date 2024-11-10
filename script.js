@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const provinceData = {
             'on': {
-                title: 'Alberta Provincial Laws',
+                title: 'Ontario Provincial Laws',
                 laws: [
                     'Highway Traffic Act',
                     'Provincial Offences Act',
@@ -68,6 +68,14 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             'bc': {
                 title: 'British Columbia Provincial Laws',
+                laws: [
+                    'Motor Vehicle Act',
+                    'Cannabis Control and Licensing Act',
+                    'Environmental Management Act'
+                ]
+            },
+            'ab': {
+                title: 'Alberta Provincial Laws',
                 laws: [
                     'Motor Vehicle Act',
                     'Cannabis Control and Licensing Act',
@@ -87,7 +95,40 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
         }
     }
+    // Chatbot Toggle
+    document.getElementById('chatbot-toggle').addEventListener('click', function() {
+        const chatWindow = document.getElementById('chat-window');
+        chatWindow.style.display = chatWindow.style.display === 'none' ? 'block' : 'none';
+    });
 
+    // Simple chat functionality
+    document.getElementById('chat-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            const input = this.value;
+            if (input.trim() !== '') {
+                addMessage(input, 'user');
+                // Simulate response (replace with actual chatbot API)
+                setTimeout(() => {
+                    addMessage('I understand you\'re asking about "' + input + '". Let me help you with that...', 'bot');
+                }, 1000);
+                this.value = '';
+            }
+        }
+    });
+
+    function addMessage(text, sender) {
+        const messagesDiv = document.getElementById('chat-messages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'mb-4';
+        const message = document.createElement('p');
+        message.className = sender === 'user' ? 'text-right text-blue-600' : 'text-gray-600';
+        message.textContent = text;
+        messageDiv.appendChild(message);
+        messagesDiv.appendChild(messageDiv);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    /*
     document.addEventListener('DOMContentLoaded', function() {
         const chatToggle = document.getElementById('chatbot-toggle');
         const chatWindow = document.getElementById('chat-window');
@@ -180,4 +221,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    */
 });

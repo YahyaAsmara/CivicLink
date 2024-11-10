@@ -181,12 +181,6 @@
 }
 
 /* Chatbot Styles */
-.chat-message {
-    margin: 0.5rem 0;
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
-    max-width: 80%;
-}
 
 .chat-message.user {
     background-color: #2563eb;
